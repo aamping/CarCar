@@ -1,7 +1,7 @@
 {
-  "name": "blablacar",
+  "name": "CarCar",
   "version": "1.1.1",
-  "description": "BlablaCar: An Ionic project",
+  "description": "CarCar: Ride with Passion",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
