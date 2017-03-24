@@ -6702,6 +6702,32 @@ button.item.item-button-right {
   .padding-horizontal > .list .item.item-input input {
     padding-right: 44px; }
 
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+
 .padding-left > .list .item {
   margin-left: 0; }
 
@@ -9814,3 +9840,4 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+

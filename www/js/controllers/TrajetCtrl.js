@@ -41,7 +41,7 @@ angular.module('BlaBlaCar')
             to: new Date(2018, 1, 1),
             inputDate: new Date(),
             mondayFirst: true,
-            disableWeekdays: [0],
+            //disableWeekdays: [0],
             closeOnSelect: false,
             templateType: 'popup'
         };
