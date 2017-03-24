@@ -6,7 +6,7 @@ angular.module('BlaBlaCar')
             password:''
         };
 
-        var usersRef = new Firebase("https://project-8473858751034565420.firebaseio.com/users");
+        var usersRef = new Firebase("https://carcar-3a341.firebaseio.com/users");
 
         // Normal Authentification
         $scope.connectionAction = function() {
@@ -42,7 +42,7 @@ angular.module('BlaBlaCar')
         // OAuth Authentification with Facebook
         $scope.connexionFacebook = function() {
 
-            var ref = new Firebase("https://project-8473858751034565420.firebaseio.com/");
+            var ref = new Firebase("https://carcar-3a341.firebaseio.com/");
             ref.authWithOAuthPopup("facebook", function(error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);

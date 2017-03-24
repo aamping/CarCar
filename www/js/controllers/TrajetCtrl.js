@@ -2,7 +2,7 @@ angular.module('BlaBlaCar')
 
     // Factory pour Firebase
     .factory("Trajets", function($firebaseArray) {
-        var itemsRef = new Firebase("https://project-8473858751034565420.firebaseio.com/trajets");
+        var itemsRef = new Firebase("https://carcar-3a341.firebaseio.com/trajets");
         return $firebaseArray(itemsRef);
     })
 
