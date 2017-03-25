@@ -9,7 +9,7 @@ angular.module('BlaBlaCar')
       var itemsRef = firebase.database().ref();
         return $firebaseArray(itemsRef);
     })
-    .controller('RegisterCtrl', function($scope, $state, Users) {
+    .controller('RegisterCtrl', function($scope, $state, Users, $firebase) {
 
         $scope.UserFactory = Users;
 
@@ -22,19 +22,39 @@ angular.module('BlaBlaCar')
             password2: ''
         };
 
+
         $scope.registerAction = function() {
             var reg = new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
+            var email;
+            var password;
             if(!reg.test($scope.registerInformations.email)) {
-                alert("Votre adresse mail n'est pas valide");
-                return;
-            }
 
-            if($scope.registerInformations.password != $scope.registerInformations.password2) {
-                alert("Les deux mots de passes doivent être similaire");
+                alert("Your email isn´t valid");
+
                 return;
             }
+              email=$scope.registerInformations.email;
+            if($scope.registerInformations.password != $scope.registerInformations.password2) {
+
+                alert("Your two passwords are not the same");
+                return;
+            }
+            password = $scope.registerInformations.password;
 
             delete $scope.registerInformations.password2;
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // ...
+            });
+
+            firebase.auth().signInWithEmailAndPassword(email,password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+            });
 
             $scope.UserFactory.$add($scope.registerInformations);
 /*
@@ -61,7 +81,7 @@ angular.module('BlaBlaCar')
             });
 
 */
-            alert("Votre compte a bien été créé");
+            alert("Your account has been created");
 
             $state.go('app.login');
         };
