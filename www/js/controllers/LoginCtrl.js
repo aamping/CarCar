@@ -70,7 +70,8 @@ angular.module('BlaBlaCar')
               user.firstName = result.user.first_name;
               user.email = result.user.email;
               user.lisLogin = true;
-
+              $scope.login= user;
+              alert("User: " + result.user.email);
               $ionicHistory.clearCache().then(function() {
                   //now you can clear history or goto another state if you need
                   $ionicHistory.clearHistory();
