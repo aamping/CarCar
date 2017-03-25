@@ -1,4 +1,4 @@
-<ion-view view-title="Les trajets">
+<ion-view view-title="Results">
     <ion-content>
         <ion-list>
             <ion-item ng-repeat="item in results">
@@ -7,7 +7,7 @@
                         <h2 style="display:inline;">Le : {{ item.dateDepart }} à {{ item.timeDepart }}</h1>
                         <h3  style="display:inline;float:right">{{ item.prix }} €</h3><br>
                         <h4  style="display:inline">{{ item.pointDepartVille }} > {{ item.pointArriveVille }}</h4>
-                        <h4 ng-show="{{ item.fumeur }}"> Option : fumeur</h4>
+                        <h4 ng-show="{{ item.fumeur }}"> Option : Smoking</h4>
                     </div>
                     <hr>
                     <div style="display:block">
