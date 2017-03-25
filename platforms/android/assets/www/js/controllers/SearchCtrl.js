@@ -11,7 +11,7 @@ angular.module('BlaBlaCar')
             arrivePays:'',
             date:''
         };
-        
+
         $scope.geolocCity = function() {
             var posOptions = {timeout: 10000, enableHighAccuracy: false};
             $cordovaGeolocation
@@ -58,11 +58,11 @@ angular.module('BlaBlaCar')
                 $scope.search.date = dateVoyage.toLocaleDateString();
 
             },
-            from: new Date(2012, 1, 1),
-            to: new Date(2016, 10, 30),
+            from: new Date(2017, 1, 1),
+            to: new Date(2018, 1, 1),
             inputDate: new Date(),
             mondayFirst: true,
-            disableWeekdays: [0],
+            //disableWeekdays: [0],
             closeOnSelect: false,
             templateType: 'popup'
         };
@@ -116,8 +116,8 @@ angular.module('BlaBlaCar')
             }
 
             var regex = new RegExp("[ ,]+", "g");
-            var depart = $scope.search.depart.split(regex);
-            var arrive = $scope.search.arrive.split(regex);
+            var depart = $scope.search.depart.toString().split(regex);
+            var arrive = $scope.search.arrive.toString().split(regex);
 
             $scope.search.departVille = depart[0];
             $scope.search.departPays = depart[1];

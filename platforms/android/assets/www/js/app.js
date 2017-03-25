@@ -1,6 +1,6 @@
 // Ionic BlaBlaCar App
 
-var app = angular.module('BlaBlaCar', ['ionic', 'BlaBlaCar.controllers', 'BlaBlaCar.routes', 'ionicDatePicker', 'ionicTimePicker', 'firebase', 'ngAutocomplete', 'ngCordova']);
+var app = angular.module('BlaBlaCar', ['ionic', 'BlaBlaCar.controllers', 'BlaBlaCar.routes', 'ionicDatePicker', 'ionicTimePicker', 'firebase', 'ngAutocomplete', 'ngCordova','google.places']);
 
 app.value('user', {
     userName: '',
@@ -9,6 +9,7 @@ app.value('user', {
     email: '',
     isLogin:false
 });
+
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,5 +24,6 @@ app.run(function($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 });

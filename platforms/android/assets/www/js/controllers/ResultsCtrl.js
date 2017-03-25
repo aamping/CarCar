@@ -1,17 +1,18 @@
 angular.module('BlaBlaCar')
 
-    .controller('ResultsCtrl', function($scope,$state, $stateParams, $firebaseArray) {
+    .controller('ResultsCtrl', function($scope,$state, $stateParams, $firebaseArray, $firebase) {
 
         var searchParams = angular.fromJson($stateParams.searchValue);
 
-        var itemsRef = new Firebase("https://carcar-3a341.firebaseio.com/trajets");
-        
+
+        var itemsRef = firebase.database().ref();
+
         if(!searchParams || searchParams === undefined) {
             $scope.results = $firebaseArray(itemsRef);
         } else {
             var results = [];
             var query = itemsRef.on('value', function (snapshot) {
-                var listTrajets = snapshot.val();
+                var listTrajets = snapshot.val;
 
                 angular.forEach(listTrajets, function (trajet){
 
@@ -28,4 +29,3 @@ angular.module('BlaBlaCar')
             $scope.results = results;
         }
     });
-

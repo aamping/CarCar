@@ -1,21 +1,21 @@
-<ion-view view-title="Rechercher">
+<ion-view view-title="Find a Ride">
   <ion-content>
     <br>
     <form name="formSearch" ng-submit="searchAction(formSearch.$valid)" novalidate>
     <div class="marginLeftSearch">
       <i class="icon ion-ionic placeholder-icon departIcon"></i>
-      <input type="search" ng-model="search.depart" ng-required="true" ng-autocomplete class="inputSearch" placeholder="Point de départ"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
+      <input type="search" ng-model="search.depart" ng-required="true" g-places-autocomplete class="inputSearch" placeholder="From"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
     </div>
     <div class="marginLeftSearch">
       <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
-      <input type="search" ng-model="search.arrive" ng-required="true" ng-autocomplete class="inputSearch"  placeholder="Point d'arrivée">
+      <input type="search" ng-model="search.arrive" ng-required="true" g-places-autocomplete class="inputSearch"  placeholder="To">
     </div>
       <br>
     <div class="marginLeftSearch">
       <i class="icon ion-calendar placeholder-icon"></i>
-        <input ng-model="search.date" ng-required="true" class="inlineD allerret" type="text" ng-click="openDatePicker()" placeholder="Date du voyage">
+        <input ng-model="search.date" ng-required="true" class="inlineD allerret" type="text" ng-click="openDatePicker()" placeholder="Date">
     </div>
-      <input type="submit" class="button button-positive searchButton" value="Rechercher">
+      <input type="submit" class="button button-positive searchButton" value="FIND">
     </form>
   </ion-content>
 </ion-view>

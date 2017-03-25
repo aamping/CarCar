@@ -1,11 +1,11 @@
 .vosAnonnces {
-  background: url('../img/accueil.jpg') no-repeat fixed center;
+  background: url('../img/Logo.png') no-repeat fixed center;
 }
 
 .homeText {
   text-align: center;
   font-size: 33px;
-  color: white;
+  color: black;
   margin-top:15%;
   line-height:30px;
 }
@@ -13,7 +13,7 @@
 .homeDescription {
   text-align: center;
   font-size:16px;
-  color:rgba(255, 255, 255, 0.5);
+  color:black;
   margin-top:40%;
 }
 
@@ -111,4 +111,3 @@ margin-top:70%;
   font-size:12px!important;
   background-color: rgba(127, 127, 127, 0.08)!important;
 }
-

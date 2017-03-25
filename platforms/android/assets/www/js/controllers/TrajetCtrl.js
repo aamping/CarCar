@@ -1,8 +1,11 @@
 angular.module('BlaBlaCar')
 
     // Factory pour Firebase
-    .factory("Trajets", function($firebaseArray) {
-        var itemsRef = new Firebase("https://carcar-3a341.firebaseio.com/trajets");
+    .factory("Trajets", function($firebaseArray, $firebase) {
+        //var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/trajets");
+
+
+        var itemsRef = firebase.database().ref();
         return $firebaseArray(itemsRef);
     })
 
@@ -37,11 +40,11 @@ angular.module('BlaBlaCar')
                 dateStart = new Date(val);
                 $scope.trajet.dateDepart = dateStart.toLocaleDateString();
             },
-            from: new Date(2012, 1, 1),
-            to: new Date(2016, 10, 30),
+            from: new Date(2017, 1, 1),
+            to: new Date(2018, 1, 1),
             inputDate: new Date(),
             mondayFirst: true,
-            disableWeekdays: [0],
+            //disableWeekdays: [0],
             closeOnSelect: false,
             templateType: 'popup'
         };
@@ -51,8 +54,8 @@ angular.module('BlaBlaCar')
                 dateEnd = new Date(val);
                 $scope.trajet.dateEnd = dateEnd.toLocaleDateString();
             },
-            from: new Date(2012, 1, 1),
-            to: new Date(2016, 10, 30),
+            from: new Date(2017, 1, 1),
+            to: new Date(2018, 1, 1),
             inputDate: new Date(),
             mondayFirst: true,
             closeOnSelect: false,
@@ -158,8 +161,8 @@ angular.module('BlaBlaCar')
                 return;
             }
             var regex = new RegExp("[ ,]+", "g");
-            var depart = $scope.trajet.pointDepart.split(regex);
-            var arrive = $scope.trajet.pointArrive.split(regex);
+            var depart = $scope.trajet.pointDepart.toString().split(regex);
+            var arrive = $scope.trajet.pointArrive.toString().split(regex);
 
             $scope.trajet.pointDepartVille = depart[0];
             $scope.trajet.pointDepartPays = depart[1];
@@ -179,4 +182,3 @@ angular.module('BlaBlaCar')
 
         }
     });
-

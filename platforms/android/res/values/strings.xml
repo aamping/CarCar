@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">BlablaCar</string>
+    <string name="app_name">CarCar</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
+    <string name="mapbox_accesstoken">pk.eyJ1IjoiYWFyY28iLCJhIjoiY2l6bmt6MTZsMDNhbTJ4b2NnZjN5cTkxdSJ9.2vH8SvBLVvTQDXcGQehwYg</string>
 </resources>
