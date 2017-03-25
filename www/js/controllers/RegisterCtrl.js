@@ -1,5 +1,6 @@
 angular.module('BlaBlaCar')
 // Factory pour Firebase
+<<<<<<< HEAD
     .factory("Users", function($firebaseArray, $firebase) {
       //  var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/users");
       // See https://firebase.google.com/docs/web/setup#project_setup for how to
@@ -7,6 +8,10 @@ angular.module('BlaBlaCar')
 
 
       var itemsRef = firebase.database().ref();
+=======
+    .factory("Users", function($firebaseArray) {
+        var itemsRef = new Firebase("https://carcar-3a341.firebaseio.com/users");
+>>>>>>> 5bf7168491db08ead5d08d186e347eb74a8e7e3f
         return $firebaseArray(itemsRef);
     })
     .controller('RegisterCtrl', function($scope, $state, Users) {
