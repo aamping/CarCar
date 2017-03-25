@@ -2,7 +2,7 @@
   <ion-content>
      <br>
       <div style="text-align: center"><h1 style="color:#0a9dc7;">Connexion</h1></div><br>
-      <a style="margin-left: 5%;width:90%" class="button button-positive" ng-click="connexionFacebook()"><i style="margin-right:10%;color:white" class="icon ion-social-facebook placeholder-icon"></i>CONNEXION FACEBOOK</a><br><br>
+      <a style="margin-left: 5%;width:90%" class="button button-positive" ng-click="Sign In with Facebook()"><i style="margin-right:10%;color:white" class="icon ion-social-facebook placeholder-icon"></i>CONNEXION FACEBOOK</a><br><br>
       <p style="text-align: center;font-size:16px;">-------- ou --------</p><br>
     <form ng-submit="connectionAction()" novalidate>
       <div class="list">
@@ -11,17 +11,17 @@
           <input type="text" ng-model="loginData.email" ng-required="true">
         </label>
         <label class="item item-input">
-          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Mot de passe</span>
+          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Password</span>
           <input type="password" ng-model="loginData.password" ng-required="true">
         </label>
         <label class="item">
-          <button class="button button-block button-calm" type="submit">Connexion</button>
+          <button class="button button-block button-calm" type="submit">Sign In</button>
         </label>
       </div>
     </form>
-      <div style="text-align: center"><a style="text-transform: uppercase;color:#0a9dc7;text-align: center" href="#">mot de passe oublié ?</a></div><br>
-      <h3 style="text-align: center;color:rgba(0, 0, 0, 0.54)">Pas encore membre ?</h3>
-     <a style="margin-left: 5%;width:90%;color:#0a9dc7;border: 1px solid #0a9dc7;" class="button button-light" href="#/app/register">INSCRIPTION</a><br><br>
+      <div style="text-align: center"><a style="text-transform: uppercase;color:#0a9dc7;text-align: center" href="#">Forgot your Password?</a></div><br>
+      <h3 style="text-align: center;color:rgba(0, 0, 0, 0.54)">Not a Member yet??</h3>
+     <a style="margin-left: 5%;width:90%;color:#0a9dc7;border: 1px solid #0a9dc7;" class="button button-light" href="#/app/register">Register</a><br><br>
   </ion-content>
     
 </ion-view>
