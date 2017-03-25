@@ -12,5 +12,4 @@
         <provider android:authorities="com.ionicframework.blablacar352105.plugins.emailcomposer.provider" android:name="com.jcjee.plugins.EmailAttachmentProvider" />
     </application>
     <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="23" />
-    <uses-sdk tools:overrideLibrary="org.apache.cordova" />
 </manifest>

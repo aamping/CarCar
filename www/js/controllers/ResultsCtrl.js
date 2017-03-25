@@ -5,7 +5,7 @@ angular.module('BlaBlaCar')
         var searchParams = angular.fromJson($stateParams.searchValue);
 
 
-        var itemsRef = firebase.database().ref();
+        var itemsRef = firebase.database().ref('/trajets');
 
         if(!searchParams || searchParams === undefined) {
             $scope.results = $firebaseArray(itemsRef);

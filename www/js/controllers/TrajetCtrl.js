@@ -164,26 +164,51 @@ angular.module('BlaBlaCar')
             var depart = $scope.trajet.pointDepart.toString().split(regex);
             var arrive = $scope.trajet.pointArrive.toString().split(regex);
 
-            $scope.trajet.pointDepartVille = depart[0];
-            $scope.trajet.pointDepartPays = depart[1];
-            $scope.trajet.pointArriveVille = arrive[0];
-            $scope.trajet.pointArrivePays = arrive[1];
+            $scope.trajet.pointDepartVille = depart[0].toString();
+            $scope.trajet.pointDepartPays = depart[1].toString();
+            $scope.trajet.pointArriveVille = arrive[0].toString();
+            $scope.trajet.pointArrivePays = arrive[1].toString();
 
             if (user.isLogin) {
                 $scope.trajet.userMail = user.email;
                 $scope.trajet.lastName = user.lastName;
                 $scope.trajet.firstName = user.firstName;
             }
+            var uid;
+            firebase.auth().onAuthStateChanged(function(user) {
+                  if (user) {
+                    uid = user.uid;
+                    alert('user: ' + uid);
+                  } else {
+                    // No user is signed in.
+                  }
+            });
             // Persist the object on firebase
-            var newKey = $scope.TrajetFactory.ref().child('trajets').push().key;
+            var newKey =  firebase.database().ref().child('trajets').push().key;
+            var postData = {
+                userId: firebase.auth().currentUser.uid,
+                departPays: $scope.trajet.pointDepartPays,
+                departVille: $scope.trajet.pointDepartVille,
+                arrivePays: $scope.trajet.pointArrivePays,
+                arriveVille: $scope.trajet.pointArriveVille,
+                dateDepart: $scope.trajet.dateDepart,
+                timeDepart: $scope.trajet.timeDepart,
+                dateEnd: $scope.trajet.dateEnd,
+                timeEnd: $scope.trajet.timeEnd
+            };
+
             var updates = {};
-            updates['/trajets/' + newKey] = $scope.trajet;
+             updates['/trajets/' + newKey] = postData;
+           // var updates = {};
+            //updates['/trajets/' + newKey] = $scope.trajet;
             //updates['/user-trajets/' + newKey] = $scope.trajet;
 
-            $scope.TrajetFactory.ref().update(updates);
+            //$scope.TrajetFactory.ref().update(updates);
             //Error: Firebase.update failed: First argument contains a function in property 'trajets.-Kg3XhooG9USL61Eg93C.pointDepart.geometry.location.lat' with contents: function (){return a} 
-
-            alert('Trajet ajouté avec succès');
+            if (firebase.database().ref().update(updates)){
+                alert('Success');
+            }
+            
             $state.go('app.home');
 
         }
