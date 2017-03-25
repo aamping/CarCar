@@ -5,8 +5,8 @@ angular.module('BlaBlaCar')
         //var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/trajets");
 
 
-        var itemsRef = firebase.database().ref();
-        return $firebaseArray(itemsRef);
+        var itemsRef = firebase.database();
+        return itemsRef;//$firebaseArray(itemsRef);
     })
 
     .controller('TrajetCtrl', function($scope, $state, ionicDatePicker, ionicTimePicker, Trajets, $cordovaGeolocation, $http, user) {
@@ -175,10 +175,17 @@ angular.module('BlaBlaCar')
                 $scope.trajet.firstName = user.firstName;
             }
             // Persist the object on firebase
-            $scope.TrajetFactory.$add($scope.trajet);
+            var newKey = $scope.TrajetFactory.ref().child('trajets').push().key;
+            var updates = {};
+            updates['/trajets/' + newKey] = $scope.trajet;
+            //updates['/user-trajets/' + newKey] = $scope.trajet;
+
+            $scope.TrajetFactory.ref().update(updates);
+            //Error: Firebase.update failed: First argument contains a function in property 'trajets.-Kg3XhooG9USL61Eg93C.pointDepart.geometry.location.lat' with contents: function (){return a} 
 
             alert('Trajet ajouté avec succès');
             $state.go('app.home');
 
         }
     });
+
