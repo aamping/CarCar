@@ -5,12 +5,12 @@
           <div class="marginLeftSearch">
             <i class="icon ion-ionic placeholder-icon departIcon"></i>
 
-            <input ng-model="trajet.pointDepart" ng-autocomplete  ng-required="true" type="search" class="inputSearch" placeholder="Point de départ"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
-              
+            <input ng-model="trajet.pointDepart" g-places-autocomplete  ng-required="true" type="search" class="inputSearch" value= "Cebu City, Cebu, Philippines" placeholder="Cebu City, Cebu, Philippines"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
+
           </div>
           <div class="marginLeftSearch">
             <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
-            <input ng-model="trajet.pointArrive" ng-autocomplete ng-required="true" type="search" class="inputSearch" placeholder="Point d'arrivée">
+            <input ng-model="trajet.pointArrive" g-places-autocomplete ng-required="true" type="search" class="inputSearch" value= "Lapu-Lapu City, Cebu, Philippines" placeholder="Lapu-Lapu City, Cebu, Philippines">
           </div>
           <div class="bar bar-header bar-positive barreDateHeure">
             <h1 class="title">DATE ET HEURE</h1>

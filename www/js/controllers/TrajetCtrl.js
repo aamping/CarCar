@@ -2,7 +2,16 @@ angular.module('BlaBlaCar')
 
     // Factory pour Firebase
     .factory("Trajets", function($firebaseArray) {
-        var itemsRef = new Firebase("https://project-8473858751034565420.firebaseio.com/trajets");
+        //var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/trajets");
+        var config = {
+          apiKey: "AIzaSyC8o0PWnndZ-nX20F_dhsvCVKWwZmyEnnw",
+          authDomain: "carcarapp-35ba8.firebaseapp.com",
+          databaseURL: "https://carcarapp-35ba8.firebaseio.com/trajets"
+        };
+
+        firebase.initializeApp(config);
+
+        var itemsRef = firebase.database().ref();
         return $firebaseArray(itemsRef);
     })
 
@@ -158,8 +167,8 @@ angular.module('BlaBlaCar')
                 return;
             }
             var regex = new RegExp("[ ,]+", "g");
-            var depart = $scope.trajet.pointDepart.split(regex);
-            var arrive = $scope.trajet.pointArrive.split(regex);
+            var depart = $scope.trajet.pointDepart.toString().split(regex);
+            var arrive = $scope.trajet.pointArrive.toString().split(regex);
 
             $scope.trajet.pointDepartVille = depart[0];
             $scope.trajet.pointDepartPays = depart[1];
@@ -179,4 +188,3 @@ angular.module('BlaBlaCar')
 
         }
     });
-

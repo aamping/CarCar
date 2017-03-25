@@ -11,7 +11,7 @@ angular.module('BlaBlaCar')
             arrivePays:'',
             date:''
         };
-        
+
         $scope.geolocCity = function() {
             var posOptions = {timeout: 10000, enableHighAccuracy: false};
             $cordovaGeolocation
@@ -116,8 +116,8 @@ angular.module('BlaBlaCar')
             }
 
             var regex = new RegExp("[ ,]+", "g");
-            var depart = $scope.search.depart.split(regex);
-            var arrive = $scope.search.arrive.split(regex);
+            var depart = $scope.search.depart.toString().split(regex);
+            var arrive = $scope.search.arrive.toString().split(regex);
 
             $scope.search.departVille = depart[0];
             $scope.search.departPays = depart[1];

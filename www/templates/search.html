@@ -4,11 +4,11 @@
     <form name="formSearch" ng-submit="searchAction(formSearch.$valid)" novalidate>
     <div class="marginLeftSearch">
       <i class="icon ion-ionic placeholder-icon departIcon"></i>
-      <input type="search" ng-model="search.depart" ng-required="true" ng-autocomplete class="inputSearch" placeholder="Point de départ"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
+      <input type="search" ng-model="search.depart" ng-required="true" g-places-autocomplete class="inputSearch" placeholder="Point de départ"><i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i><br><br>
     </div>
     <div class="marginLeftSearch">
       <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
-      <input type="search" ng-model="search.arrive" ng-required="true" ng-autocomplete class="inputSearch"  placeholder="Point d'arrivée">
+      <input type="search" ng-model="search.arrive" ng-required="true" g-places-autocomplete class="inputSearch"  placeholder="Point d'arrivée">
     </div>
       <br>
     <div class="marginLeftSearch">

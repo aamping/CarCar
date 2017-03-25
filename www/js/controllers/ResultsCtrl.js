@@ -4,14 +4,23 @@ angular.module('BlaBlaCar')
 
         var searchParams = angular.fromJson($stateParams.searchValue);
 
-        var itemsRef = new Firebase("https://project-8473858751034565420.firebaseio.com/trajets");
-        
+        //var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/trajets");
+        var config = {
+          apiKey: "AIzaSyC8o0PWnndZ-nX20F_dhsvCVKWwZmyEnnw",
+          authDomain: "carcarapp-35ba8.firebaseapp.com",
+          databaseURL: "https://carcarapp-35ba8.firebaseio.com/trajets"
+        };
+
+        firebase.initializeApp(config);
+
+        var itemsRef = firebase.database().ref();
+
         if(!searchParams || searchParams === undefined) {
             $scope.results = $firebaseArray(itemsRef);
         } else {
             var results = [];
             var query = itemsRef.on('value', function (snapshot) {
-                var listTrajets = snapshot.val();
+                var listTrajets = snapshot.val;
 
                 angular.forEach(listTrajets, function (trajet){
 
@@ -28,4 +37,3 @@ angular.module('BlaBlaCar')
             $scope.results = results;
         }
     });
-
