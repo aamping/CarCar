@@ -1,19 +1,19 @@
-<ion-view view-title="Register">
+<ion-view view-title="CarCar Sign Up">
     <ion-content>
  <br>
-      <div style="text-align: center"><h1 style="color:#0a9dc7;">Inscription</h1></div><br>
+      <div style="text-align: center"><h1 style="color:#0a9dc7;">Sign Up</h1></div><br>
     <form ng-submit="registerAction()" novalidate>
       <div class="list">
           <label class="item item-input">
-          <span class="input-label">Nom</span>
+          <span class="input-label">Last Name</span>
           <input type="text" ng-model="registerInformations.lastName" ng-required="true">
         </label>
           <label class="item item-input">
-          <span class="input-label">Prénom</span>
+          <span class="input-label">First Name</span>
           <input type="text" ng-model="registerInformations.firstName" ng-required="true">
         </label>
         <label class="item item-input">
-          <span class="input-label"><i class="icon ion-person placeholder-icon"></i>Nom d'utilisateur</span>
+          <span class="input-label"><i class="icon ion-person placeholder-icon"></i>User Name</span>
           <input type="text" ng-model="registerInformations.userName" ng-required="true">
         </label>
         <label class="item item-input">
@@ -21,15 +21,15 @@
           <input type="text" ng-model="registerInformations.email" ng-required="true">
         </label>
         <label class="item item-input">
-          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Mot de passe</span>
+          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Password</span>
           <input type="password" ng-model="registerInformations.password" ng-required="true">
         </label>
         <label class="item item-input">
-          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Répéter le mot de passe</span>
+          <span class="input-label"><i class="icon ion-locked placeholder-icon"></i>Retype your Password</span>
           <input type="password" ng-model="registerInformations.password2" ng-required="true">
         </label>
         <label class="item">
-          <button class="button button-block button-calm" type="submit">Inscription</button>
+          <button class="button button-block button-calm" type="submit">Sing Up</button>
         </label>
       </div>
     </form>
