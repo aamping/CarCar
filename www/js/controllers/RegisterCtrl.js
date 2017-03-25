@@ -1,17 +1,8 @@
 angular.module('BlaBlaCar')
 // Factory pour Firebase
-    .factory("Users", function($firebaseArray, $firebase) {
-      //  var itemsRef = new Firebase("https://carcarapp-35ba8.firebaseio.com/users");
-      // See https://firebase.google.com/docs/web/setup#project_setup for how to
-      // auto-generate this config
 
+    .controller('RegisterCtrl', function($scope, $state, $firebase) {
 
-      var itemsRef = firebase.database().ref();
-        return $firebaseArray(itemsRef);
-    })
-    .controller('RegisterCtrl', function($scope, $state, Users, $firebase) {
-
-        $scope.UserFactory = Users;
 
         $scope.registerInformations = {
             userName: '',
@@ -42,47 +33,24 @@ angular.module('BlaBlaCar')
             password = $scope.registerInformations.password;
 
             delete $scope.registerInformations.password2;
-            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            . then(function(user){
+              alert("Your account has been created");
+              $state.go('app.login');
+            })
+            .catch(function(error) {
               // Handle Errors here.
               var errorCode = error.code;
               var errorMessage = error.message;
-              // ...
+              if (errorCode == 'auth/weak-password') {
+                alert('The password is too weak.');
+              } else {
+                alert(errorMessage);
+              }
+              console.log(error);
             });
+            //$scope.UserFactory.$add($scope.registerInformations);
 
-            firebase.auth().signInWithEmailAndPassword(email,password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-            });
 
-            $scope.UserFactory.$add($scope.registerInformations);
-/*
-            // Envoie d'un email
-            $cordovaEmailComposer.isAvailable().then(function() {
-                var email = {
-                    to: $scope.registerInformations.email,
-                    cc: '',
-                    bcc: '',
-                    attachments: [],
-                    subject: 'BlaBlaCar new account for '+$scope.registerInformations.lastName+' '+$scope.registerInformations.firstName,
-                    body: 'Thank\'s to register to BlaBlaCar Application, <br><br><br>' +
-                    'Your account informations is : <br><br>' +
-                    'Username : '+$scope.registerInformations.userName+'<br>' +
-                    'Password :'+$scope.registerInformations.password+'<br><br><br>' +
-                    'Best Regards<br>' +
-                    'BlaBlaCar community',
-                    isHtml: true
-                };
-
-                $cordovaEmailComposer.open(email).then(null, function () {
-                    alert("l'envoie de l'email a échoué");
-                });
-            });
-
-*/
-            alert("Your account has been created");
-
-            $state.go('app.login');
         };
     });

@@ -12,11 +12,34 @@ angular.module('BlaBlaCar')
         // Normal Authentification
         $scope.connectionAction = function() {
             var isLogin = false;
+            var email = $scope.loginData.email;
+            var password = $scope.loginData.password;
 
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function(user){
+                  $ionicHistory.clearCache().then(function() {
+                  //now you can clear history or goto another state if you need
+                  $ionicHistory.clearHistory();
+                  $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+                  $state.go('app.home', {reload: true});
+              });
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              if (errorCode === 'auth/wrong-password') {
+                alert('Wrong password.');
+              } else {
+                alert(errorMessage);
+              }
+              console.log(error);
+            });
+/*
             var query = usersRef.on('value', function (snapshot) {
                 var listUsers = snapshot.val;
 
-                angular.forEach(listUsers, function (userFireBase) {
+               angular.forEach(listUsers, function (userFireBase) {
                     if (userFireBase.email == $scope.loginData.email && userFireBase.password == $scope.loginData.password) {
                         user.userName = userFireBase.userName;
                         user.lastName = userFireBase.lastName;
@@ -26,18 +49,7 @@ angular.module('BlaBlaCar')
                         isLogin = true;
                     }
                 });
-
-                if(isLogin) {
-                    $ionicHistory.clearCache().then(function() {
-                        //now you can clear history or goto another state if you need
-                        $ionicHistory.clearHistory();
-                        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
-                        $state.go('app.home', {reload: true});
-                    });
-                } else {
-                    alert("Votre email ou votre mot de passe n'est pas bon");
-                }
-            });
+*/
         };
 
         // OAuth Authentification with Facebook
@@ -68,7 +80,7 @@ angular.module('BlaBlaCar')
             }).catch(function(error) {
               // An error occurred
               console.log("Login Failed!", error);
-              alert("La connnexion avec Facebook a échoué");
+              alert("Login Failed!");
             });
         /*  ref.authWithOAuthPopup("facebook", function(error, authData) {
 =======
